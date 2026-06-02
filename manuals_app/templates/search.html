@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuals Search</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+  h1 { font-size: 1.5rem; }
+  input[type="text"] { width: 100%; padding: 0.5rem; font-size: 1rem; box-sizing: border-box; }
+  select { padding: 0.5rem; font-size: 1rem; }
+  button { padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer; }
+  .field { margin-bottom: 1rem; }
+  label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Manuals Search</h1>
+  <form action="/search" method="get">
+    <div class="field">
+      <label for="q">Search query</label>
+      <input type="text" id="q" name="q" placeholder="e.g. change oil" autofocus>
+    </div>
+    <div class="field">
+      <label for="category">Category (optional)</label>
+      <select id="category" name="category">
+        <option value="">All categories</option>
+        <option value="Automotive">Automotive</option>
+        <option value="Appliances">Appliances</option>
+      </select>
+    </div>
+    <button type="submit">Search</button>
+  </form>
+</body>
+</html>

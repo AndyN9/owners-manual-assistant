@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Results - Manuals Search</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; color: #333; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+  pre { background: #f5f5f5; padding: 0.75rem; border-radius: 4px; overflow-x: auto; white-space: pre-wrap; }
+  .result { margin-bottom: 1.5rem; }
+  .heading-path { color: #555; font-size: 0.85rem; margin-bottom: 0.25rem; }
+  .no-results { color: #888; font-style: italic; }
+  .back { margin-bottom: 1rem; }
+  a { color: #0066cc; }
+  .summary { color: #666; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+  <div class="back"><a href="/">&larr; New search</a></div>
+  <h1>Search: {{ query }}</h1>
+  {% if category %}<p class="summary">Category: {{ category }}</p>{% endif %}
+  <p class="summary">{{ total }} result{% if total != 1 %}s{% endif %}</p>
+
+  {% if total == 0 %}
+  <p class="no-results">No matching content found.</p>
+  {% else %}
+    {% for filename, chunks in grouped.items() %}
+    <h2>{{ filename }}</h2>
+      {% for chunk in chunks %}
+      <div class="result">
+        <div class="heading-path">{{ chunk.heading_path }}</div>
+        <pre>{{ chunk.content_markdown }}</pre>
+      </div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+</body>
+</html>

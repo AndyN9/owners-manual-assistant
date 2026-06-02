@@ -1,0 +1,13 @@
+*.db
+manuals/*.pdf
+__pycache__/
+*.egg-info/
+venv/
+.venv/
+.uv/
+output_dir/
+.env
+
+
+# Project-level opencode config (personal preferences, absolute paths)
+.opencode/

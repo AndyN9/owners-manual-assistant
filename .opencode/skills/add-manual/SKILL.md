@@ -9,7 +9,7 @@ Ingests a single PDF into the SQLite FTS5 knowledge base. Validates the file, ex
 
 ## How It Works
 
-1. **Validate** — Confirm the PDF exists, is readable, and isn't already indexed
+1. **Validate** — Confirm the PDF exists and is readable
 2. **Choose extractor** — `pypdf` (fast, no deps) or `marker` (heading-aware, requires `marker-pdf`)
 3. **Ingest** — Run `ingest_pdf()` which extracts, chunks by ATX headings, and inserts into SQLite with FTS5 triggers
 4. **Verify** — Run a search query matching the filename or content to confirm chunks landed

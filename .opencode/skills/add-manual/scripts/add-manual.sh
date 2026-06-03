@@ -55,12 +55,15 @@ SECTION_COUNT=$(echo "$OUTPUT" | grep -oP '\d+(?= sections)' || echo "")
 
 BASENAME=$(basename "$FILE" .pdf)
 echo "Verifying search for '$BASENAME'..." >&2
-VERIFY=$(python3 -c "
+export SKILL_VERIFY_FILENAME="$BASENAME"
+VERIFY=$(python3 << 'PYEOF' 2>&1
+import os
 from manuals_app.search import search_manuals
 from manuals_app.db import get_database_path
-results = search_manuals(get_database_path(), '$BASENAME', limit=5)
+results = search_manuals(get_database_path(), os.environ["SKILL_VERIFY_FILENAME"], limit=5)
 print(len(results))
-" 2>&1) || VERIFY="?"
+PYEOF
+) || VERIFY="?"
 
 cat <<JSON
 {

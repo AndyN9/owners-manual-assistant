@@ -9,5 +9,6 @@ output_dir/
 .env
 
 
-# Project-level opencode config (personal preferences, absolute paths)
-.opencode/
+# Project-level opencode config — track skills, ignore personal config
+.opencode/opencode.json
+.opencode/.gitignore
